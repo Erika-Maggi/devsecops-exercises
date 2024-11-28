@@ -80,10 +80,10 @@ jobs:
            cdxgen
            --type docker
            --format json
-           --spec-version="1.5"
-           --project-name="${{ project }}"
-           --project-version="build-${{ github.run_number }}"
-           -o "${{ project }}-docker_bom.json"
+           --spec-version="${{matrix.cdx_spec_version}}"
+           --project-name="${{ matrix.project }}"
+           --project-version="${{ github.run_number }}"
+           -o "${{ project }}-docker_bom.json" ${{ matrix.project }}:latest 
            image:tag
 
        - name: upload Artifacts
